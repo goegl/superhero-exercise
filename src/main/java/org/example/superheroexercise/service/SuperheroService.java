@@ -4,6 +4,7 @@ import org.example.superheroexercise.model.Superhero;
 import org.example.superheroexercise.repository.SuperheroRepository;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -20,5 +21,10 @@ public class SuperheroService {
 
     public Superhero findById(int id){
         return superheroRepository.findById(id);
+    }
+
+    public Superhero addHero(Superhero superhero) throws IOException {
+       superheroRepository.save(superhero);
+       return superhero;
     }
 }

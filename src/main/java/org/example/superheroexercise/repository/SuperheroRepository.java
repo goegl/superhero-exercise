@@ -5,6 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -27,9 +29,10 @@ public class SuperheroRepository {
         return null;
     }
 
-    public void save(Superhero superhero) {
+    public void save(Superhero superhero) throws IOException {
         superheroList.add(superhero);
         superhero.setId(nextId++);
+        addToFile("src/main/resources/static/superheroes.csv", superhero);
     }
 
     public void populateList() throws Exception{
@@ -52,6 +55,17 @@ public class SuperheroRepository {
 
     public List<Superhero> getSuperheroList() {
         return superheroList;
+    }
+
+    public void addToFile(String filepath, Superhero superhero) throws IOException {
+        FileWriter fileWriter = new FileWriter(filepath);
+        fileWriter.append("\n");
+        fileWriter.append(superhero.getName().concat(","));
+        fileWriter.append(superhero.getHeroName());
+        for(String power : superhero.getPowers()){
+            fileWriter.append(",".concat(power));
+        }
+        fileWriter.close();
     }
 
 
