@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Full Hero List</title>
+</head>
+<body>
+<h1>All the heroes:</h1>
+<table>
+    <tr>
+        <th>Hero name</th><th>Civilian name</th> <th>Powers</th>
+    </tr>
+    <tr th:each="hero:${heroes}">
+        <td th:text="${hero.heroName}"></td>
+        <td th:text="${hero.name}"></td>
+        <td th:text="${hero.powers}"></td>
+    </tr>
+
+</table>
+
+</body>
+</html>
