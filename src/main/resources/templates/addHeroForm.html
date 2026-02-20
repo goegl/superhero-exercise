@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Hero</title>
+</head>
+<body>
+<form th:action="@{/heroes/save}" th:object="${superHero}" th:method="post">
+    <input type="hidden" th:field="${superHero.id}"/>
+
+    <label>Hero Name</label>
+    <label>
+        <input th:field="${superHero.heroName}" required>
+    </label>
+    <br>
+    <label>Civilian Name</label>
+    <label>
+        <input th:field="${superHero.name}">
+    </label>
+    <br>
+    <label>Add Superpowers</label>
+    <label>
+        <input th:field="${superHero.powers}">
+    </label>
+    
+    
+</form>
+
+</body>
+</html>

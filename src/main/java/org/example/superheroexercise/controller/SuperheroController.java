@@ -1,5 +1,6 @@
 package org.example.superheroexercise.controller;
 
+import org.example.superheroexercise.model.Superhero;
 import org.example.superheroexercise.service.SuperheroService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +20,14 @@ public class SuperheroController {
     public String showAllHeroes(Model model){
         model.addAttribute("heroes", service.getAllHeroes());
         return"allHeroes";
+    }
+
+    @GetMapping("/add")
+    public String addHero(Model model){
+        Superhero superhero = new Superhero();
+        model.addAttribute("superHero", superhero);
+        model.addAttribute("listOfPowers", superhero.getPowers());
+        return "addHeroForm";
     }
 
 }
